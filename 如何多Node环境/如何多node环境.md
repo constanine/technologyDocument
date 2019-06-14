@@ -39,6 +39,7 @@ nodeFile
 prefix=F:\node6-cache\global #你指定这个node下,模块下载的缓存地址,global模式,npm install -g
 cache=F:\node6-cache\cache  #你指定这个node下,模块下载的缓存地址,cache模式,npm install
 ```
+**注意**,不同的node环境,npmrc.prefix,npmrc.cache必须指向不同的地址,不然仍然会出现安装冲突！
 
 #### 6. 使用环境变量切换node版本
 
