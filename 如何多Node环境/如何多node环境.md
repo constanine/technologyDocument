@@ -59,7 +59,7 @@ cache=F:\node6-cache\cache  #你指定这个node下,模块下载的缓存地址,
    ##### 6.5 对于有些npm命令如webpack,发现再使用`npm install webpack -g`，之后,webpack仍然报出无法找到命令行的问题,是因为,需要将`npmrc`文件中的`prefix`属性定义在PATH环境变量中,顾参照`NODE_ENVX1`,以及`NODE_PATH`,建议如下
    - 创建环境变量`NODE_GLOBAL_CACHE_V6`,`NODE_GLOBAL_CACHE_V10`
    - 创建环境变量`NODE_GLOBAL_CACHE_PATH`
-   - `Path`里面,永远使用`NODE_GLOBAL_CACHE_PATH`如xxx:%NODE_PATH%:xxx
+   - `Path`里面,永远使用`NODE_GLOBAL_CACHE_PATH`如xxx:%NODE_GLOBAL_CACHE_PATH%:xxx
    - ![](./imgs/设置环境变量-node-global-cache.png)
 #### 附
    - 如果喜欢在`windows`下用命令行的,可以使用`setx`命令
