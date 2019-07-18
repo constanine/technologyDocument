@@ -1,0 +1,35 @@
+事物
+事务特性（4种）: 
+原子性 （atomicity）:强调事务的不可分割. 
+一致性 （consistency）:事务的执行的前后数据的完整性保持一致. 
+隔离性 （isolation）:一个事务执行的过程中,不应该受到其他事务的干扰 
+持久性（durability） :事务一旦结束,数据就持久到数据库
+
+解决读问题: 设置事务隔离级别（5种） 
+DEFAULT 这是一个PlatfromTransactionManager默认的隔离级别，使用数据库默认的事务隔离级别. 
+未提交读（read uncommited） :脏读，不可重复读，虚读都有可能发生 
+已提交读 （read commited）:避免脏读。但是不可重复读和虚读有可能发生 
+可重复读 （repeatable read） :避免脏读和不可重复读.但是虚读有可能发生. 
+串行化的 （serializable） :避免以上所有读问题.
+
+* 保证同一个事务中 
+PROPAGATION_REQUIRED 支持当前事务，如果不存在 就新建一个(默认) 
+PROPAGATION_SUPPORTS 支持当前事务，如果不存在，就不使用事务 
+PROPAGATION_MANDATORY 支持当前事务，如果不存在，抛出异常 
+* 保证没有在同一个事务中 
+PROPAGATION_REQUIRES_NEW 如果有事务存在，挂起当前事务，创建一个新的事务 
+PROPAGATION_NOT_SUPPORTED 以非事务方式运行，如果有事务存在，挂起当前事务 
+PROPAGATION_NEVER 以非事务方式运行，如果有事务存在，抛出异常 
+PROPAGATION_NESTED 如果当前事务存在，则嵌套事务执行
+
+sql-mysql
+索引,b+tree
+主键索引-聚簇索引
+聚簇索引将索引和数据行保存在同一个B-Tree中，查询通过聚簇索引可以直接获取数据，相比非聚簇索引需要第二次查询（非覆盖索引的情况下）效率要高。
+聚簇索引对于范围查询的效率很高，因为其数据是按照大小排列的，
+非聚簇索引，又叫二级索引。二级索引的叶子节点中保存的不是指向行的物理指针，而是行的主键值,通过非聚簇索引,需要再回表,除非索引覆盖
+
+join ,left join,right join,out join,迪卡奇
+union,or,union all
+
+spring cloud和spring boot相关

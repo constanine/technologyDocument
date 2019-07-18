@@ -1,0 +1,12 @@
+栈和堆
+栈用于维护函数调用的上下文，离开栈函数调用就会无法实现。栈通常在用户空间的最高地址处分配，通常有数兆字节。
+堆用来容纳应用程序动态分配的内存区域，我们使用malloc 或者new分配内存时，得到的内存来自堆里。堆通常存于栈的下方（低地址方向），堆一般比栈大很多，可以有几十至数百兆字节的容量。
+
+注意spring的applicationContext本质是classloader
+spring-aop,切面,pointcut
+spring-ioc,反射写入,autowried
+java基础问题
+
+java创建对象的几种方式，除了new还有那些
+无参构造函数:class.newInstance();
+有参构造函数:User.class.getConstructor(null).newInstance(initargs);

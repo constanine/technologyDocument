@@ -1,0 +1,27 @@
+多线程
+线程一般实现由继承Thread,或实现Runnable接口,
+但是在jdk1.5以后出现callable,通过ExecutionService.submit(callable)运行,可以拿到线程完成的后的callback的call结果,
+当然再结合futuer接口的FutureTask(Runnable, Future->RunnableFuture->FutureTask)
+Callable+Future: Task is Callable 
+ExecutorService executor = Executors.newCachedThreadPool();
+Task task = new Task();
+Future<Integer> result = executor.submit(task);
+executor.shutdown();
+result.get()
+
+Callable+FutureTask:Task is Callable
+ExecutorService executor = Executors.newCachedThreadPool();
+Task task = new Task();
+FutureTask<Integer> futureTask = new FutureTask<Integer>(task);
+executor.submit(futureTask);
+executor.shutdown();
+futureTask.get()
+
+多线程锁处理方式
+sychronized,lock(reentranlock)
+synchronized是托管给JVM执行的(monitor enter/exit),而lock是java写的控制锁的代码(lock.lock/unlock)
+synchronized 是悲观锁,lock是乐观锁CAS操作（Compare and Swap）,
+synchronized 是自旋锁,无法中断,lock.trylock非自旋,直接告知获取失败,lock.lock自旋锁,但是可用用lock.lockInterruptibly(),打断等待
+synchronized与wait/notify结合,达到切换线程,wait会释放锁
+lock通过lock.newCondition().await()/signal(),来做到wait/notify相同的目的,lock.newCondition().await()时可以释放lock锁，线程进入阻塞状态，而等待其他线程的 lock.newCondition().signal()操作时，就会唤醒线程，重新持有lock锁
+
